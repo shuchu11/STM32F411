@@ -1,3 +1,10 @@
+#include "minimp3.h"
+#include "minimp3_ex.h"
+#include "i2s.h"           // HAL_I2S_Transmit_DMA 與 hi2s3 宣告
+#include "fatfs.h"         // FATFS 結構體與 f_mount、f_open 等（minimp3_ex 用得到）
+#include "main.h"          // 通常包含 Error_Handler 與其他全域變數
+#include <string.h>
+
 void play_mp3_stream(const char* filename)
 {
     if (mp3dec_ex_open(&dec, filename, MP3D_SEEK_TO_SAMPLE) != 0) {
